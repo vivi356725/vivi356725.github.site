@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de Vida</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #444;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar ul li {
+         float: left;  
+        }
+
+        .navbar ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+         .navbar ul li a:hover {
+            background-color: #222;
+            color: #ffa07a;
+        }
+
+        .container {
+            width: 100%;
+            max-width: none;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #555;
+        }
+
+        p, ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .cover-container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .cover-container h1 {
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .cover-container h2 {
+            font-size: 2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .cover-container p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .cover-container .author {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #999;
+        }
+
+        .autorretrato-container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .autorretrato-container h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .autorretrato-container p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666;
+            text-align: left;
+        }
+
+        .autorretrato-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .acrostico-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .acrostico {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 20px;
+            font-size: 1.5em;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .acrostico-img {
+            flex: 0.5;
+            text-align: center;
+        }
+
+        .acrostico-img img {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+/* Ajuste para pantallas pequeñas */
+    @media (max-width: 768px) {
+        .acrostico-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .acrostico {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .acrostico-img img {
+            width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #007bff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 20px;
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            margin: 10px 0;
+            width: 45%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 55%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 4px solid #007bff;
+            border-radius: 50%;
+            left: -10px;
+        }
+        .right::after {
+            left: -10px;
+        }
+
+    @media (max-width: 768px) {
+        .timeline::after {
+            left: 20px; /* Línea de la línea de tiempo ajustada */
+        }
+
+        .timeline-item {
+            width: 100%;
+            left: 0 !important;
+            padding-left: 50px; /* Espacio para la línea */
+        }
+
+        .timeline-item::after {
+            left: 10px; /* Punto del evento ajustado */
+        }
+
+        .timeline-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+        .vision-container {
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-in-out;
+            margin: 20px auto;
+        }
+        .vision-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 15px;
+        }
+        .vision-text {
+            font-size: 22px;
+            color: #444;
+            line-height: 1.8;
+        }
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .mision-container {
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-in-out;
+            margin: 20px auto;
+        }
+        .mision-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 15px;
+        }
+        .mision-text {
+            font-size: 22px;
+            color: #444;
+            line-height: 1.8;
+        }
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .meta-section {
+            margin-bottom: 40px;
+        }
+
+        .meta-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2e8b57;
+            margin-bottom: 15px;
+        }
+
+        .meta-category {
+            margin-bottom: 20px;
+        }
+
+        .meta-category h4 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .meta-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .meta-category li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+
+        .meta-category li:hover {
+            background-color: #e0f7fa;
+        }
+
+        .allies-diagram {
+            width: 100%;
+            min-height: 700px;
+            max-width: 800px;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Nodo central */
+        .central-node {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 3px solid #007bff;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+
+        /* Nodos aliados */
+        .ally-node {
+            position: absolute;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            width: 140px;
+            max-width: 130px;
+            min-height: 80px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .ally-node:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .node-1 {
+            top: 5%;    
+            left: 50%;
+        }
+
+        .node-2 {
+            top: 20%;  
+            left: 80%; 
+        }
+
+        .node-3 {
+            top: 50%;
+            left: 90%;   
+        }
+
+        .node-4 {
+            top: 80%;  
+            left: 80%; 
+        }
+
+        .node-5 {
+            top: 95%;     
+            left: 50%;
+        }
+
+        .node-6 {
+            top: 80%;  
+            left: 20%; 
+        }
+
+        .node-7 {
+            top: 50%;
+            left: 10%;   
+        }
+
+        .node-8 {
+            top: 20%;  
+            left: 20%; 
+        }
+
+        .values-diagram {
+            width: 100%;
+            min-height: 700px;
+            max-width: 800px;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Nodo central */
+        .central-node {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 4px solid #28a745;
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            margin-bottom: 50px;
+        }
+
+        /* Nodos de valores */
+        .value-node {
+            position: absolute;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            width: 150px;
+            min-height: 100px;
+            padding: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Hover effect */
+        .value-node:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Estilos de lista dentro de cada nodo */
+        .value-node ul {
+            padding-left: 0;
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .value-node li {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        /* Asignar colores a los nodos */
+        .value-1 { top: 5%; left: 50%; border-color: #007bff; }
+        .value-2 { top: 20%; left: 80%; border-color: #6f42c1; }
+        .value-3 { top: 50%; left: 90%; border-color: #28a745; }
+        .value-4 { top: 80%; left: 80%; border-color: #dc3545; }
+        .value-5 { top: 95%; left: 50%; border-color: #fd7e14; }
+        .value-6 { top: 80%; left: 20%; border-color: #ffc107; }
+        .value-7 { top: 50%; left: 10%; border-color: #6c757d; }
+        .value-8 { top: 20%; left: 20%; border-color: #e83e8c; }
+
+        .strategies-diagram {
+            width: 100%;
+            height: 700px; /* Ajusta la altura */
+            max-width: 800px;
+            position: relative;
+        }
+
+        /* Nodo central */
+        .central-node {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 3px solid #dc3545; /* Rojo fuerte */
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Nodos de estrategias */
+        .strategy-node {
+            position: absolute;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            width: 150px;
+            max-width: 140px;
+            min-height: 80px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .strategy-node:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Posicionamiento circular */
+        .strategy-1 { top: 10%; left: 50%; }
+        .strategy-2 { top: 23%; left: 78%; }
+        .strategy-3 { top: 50%; left: 90%; }
+        .strategy-4 { top: 77%; left: 78%; }
+        .strategy-5 { top: 90%; left: 50%; }
+        .strategy-6 { top: 77%; left: 22%; }
+        .strategy-7 { top: 50%; left: 10%; }
+        .strategy-8 { top: 23%; left: 22%; }
+
+    @media (max-width: 768px) {
+        .allies-diagram, .values-diagram, .strategies-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            min-height: auto;
+        }
+
+        .ally-node, .value-node, .strategy-node {
+            position: static;
+            width: 90%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .central-node {
+            position: static;
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+        .foda-table {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .foda-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .foda-box {
+            flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .foda-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Colores por categoría */
+        .fortalezas { background-color: #d4edda; border: 2px solid #28a745; } /* Verde */
+        .oportunidades { background-color: #d1ecf1; border: 2px solid #17a2b8; } /* Azul */
+        .debilidades { background-color: #fff3cd; border: 2px solid #ffc107; } /* Amarillo */
+        .amenazas { background-color: #f8d7da; border: 2px solid #dc3545; } /* Rojo */
+
+        /* Responsivo */
+    @media (max-width: 768px) {
+        .foda-row {
+            flex-direction: column;
+        }
+    }
+
+        .conclusion-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.6;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .conclusion-box:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .conclusion-text {
+            color: #333;
+            font-weight: 400;
+        }
+
+        /* Responsivo */
+    @media (max-width: 768px) {
+        .conclusion-box {
+            padding: 20px;
+            font-size: 1em;
+        }
+    }
+
+        .gratitude-box {
+            background-color: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            max-width: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .gratitude-box p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+        }
+
+
+        /* Responsivo */
+    @media (max-width: 768px) {
+        .gratitude-box {
+            padding: 20px;
+            font-size: 1em;
+        }
+    }
+
+        .goals-box {
+            background-color: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            max-width: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .goals-box p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+        }
+
+    @media (max-width: 768px) {
+        .goals-box {
+            padding: 20px;
+            font-size: 1em;
+        }
+    }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer .quote {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .footer nav a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer nav a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .copyright {
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        .back-to-top {
+            display: block;
+            margin-top: 10px;
+            color: #17a2b8;
+            text-decoration: none;
+        }
+
+        .back-to-top:hover {
+            text-decoration: underline;
+    }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1 class="animate__animated animate__fadeInDown">Proyecto de Vida</h1>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#caratula">Carátula</a></li>
+            <li class="nav-item"><a class="nav-link" href="#personalidad">Personalidad</a></li>
+            <li class="nav-item"><a class="nav-link" href="#autorretrato">Autorretrato</a></li>
+            <li class="nav-item"><a class="nav-link" href="#acro">Acróstico</a></li>
+            <li class="nav-item"><a class="nav-link" href="#biografia">Biografía</a></li>
+            <li class="nav-item"><a class="nav-link" href="#vision">Visión</a></li>
+            <li class="nav-item"><a class="nav-link" href="#mision">Misión</a></li>
+            <li class="nav-item"><a class="nav-link" href="#metas">Metas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#aliados">Aliados</a></li>
+            <li class="nav-item"><a class="nav-link" href="#valores">Valores</a></li>
+            <li class="nav-item"><a class="nav-link" href="#estrategias">Estrategias</a></li>
+            <li class="nav-item"><a class="nav-link" href="#foda">FODA</a></li>
+            <li class="nav-item"><a class="nav-link" href="#conclusion">Conclusión</a></li>
+            <li class="nav-item"><a class="nav-link" href="#agradecimientos">Agradecimientos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#metas-alcanzadas">Metas Alcanzadas</a></li>
+        </ul>
+    </div>
+</nav>
+
+        </div>
+    </header>
+    
+    <main>
+        <section id="caratula" class="cover-container animate__animated animate__fadeInUp">
+            <div class="container">
+                <h1>Proyecto de Vida</h1>
+                <h2>Viviana Noemi Vásquez Arriola</h2>
+                <p>Este proyecto de vida refleja mis metas, logros, valores, visión, misión y las áreas prioritarias en mi vida. Aquí comparto mi viaje personal y profesional hacia un futuro significativo y exitoso.</p>
+                <div class="author">
+                    <p>Marzo 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="personalidad" class="section animate__animated animate__fadeInUp">
+            <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                <div style="flex: 1; min-width: 300px; padding-right: 20px;">
+                <h2>Personalidad</h2>
+                <h1>¿Quién soy yo?</h1>
+                <h3>Mi nombre es Viviana Noemi Vásquez Arriola, los valores que me definen son:</h3>
+                <ul>
+                    <li>Alegría</li>
+                    <li>Amor</li>
+                    <li>Cariño</li>
+                    <li>Tranquilidad</li>
+                </ul>
+                <h3>Una de mis mayores metas es:</h3> 
+                <ul>
+                    <li>Aprender más de cuatro idiomas</li>
+                </ul>
+                <h3>Al igual que mis habilidades destacadas son:</h3>
+                <ul>
+                    <li>Sé cocinar</li>
+                    <li>Sé oír a las demás personas y me gusta poder ayudarlas</li>
+                </ul>
+                <h3>Soy alérgica a:</h3>
+                <ul>
+                    <li>La crema de maní</li>
+                    <li>A la aspirina</li>
+                </ul>
+                <h3>Se me dificulta:</h3>
+                <ul>
+                    <li>Ver, tengo miopía y astigmatismo, por eso uso lentes.</li>
+                </ul>
+                <h3>Personas que me motivan:</h3>
+                <ul>
+                    <li>Dios, mis papás y mis hermanas</li>
+                </ul>
+            </div>
+            <div style="flex: 0.5; text-align: center;">
+                <img src="fotoyo2.jpeg" alt="Imagen de Viviana" style="max-width: 250px; width: 100%; height: auto; border-radius: 10px;">
+                </div>
+            </div>
+        </section>
+        <section id="autorretrato" class="section animate__animated animate__fadeInUp">
+            <div class="autorretrato-container">
+                <h1>Autorretrato</h1>
+                <p>¡Hola! Mi nombre es Viviana Noemi Vásquez Arriola. Soy una persona alegre, amorosa y cariñosa. Me encanta aprender y ayudar a los demás. Una de mis metas es aprender más de cuatro idiomas y disfrutar de la vida con tranquilidad.</p>
+                <p>En mi tiempo libre, disfruto cocinar y escuchar a las personas para poder brindarles mi apoyo. Aunque tengo miopía y astigmatismo, uso lentes que me ayudan a ver mejor. Tengo alergias a la crema de maní y a la aspirina, por lo que siempre llevo precauciones.</p>
+                <img src="myAvatar.png" alt="Foto de Viviana Noemi Vásquez Arriola">
+
+                <p>Mis mayores motivaciones son Dios, mis padres y mis hermanas. Ellos son mi inspiración para seguir adelante y alcanzar mis metas.</p>
+            </div>
+        </section>
+
+        <section id="acro" class="section animate__animated animate__fadeInUp">
+            <div class="acrostico-container">
+                <div class="acrostico">
+                <h1>Acróstico</h1>
+                <h2>Viviana</h2>
+                <p>
+                    <strong>V</strong>ibrante y llena de energía,<br>
+                    <strong>I</strong>nspirando a los que están cerca,<br>
+                    <strong>V</strong>uela alto en cada sueño,<br>
+                    <strong>I</strong>deas brillantes siempre tiene,<br>
+                    <strong>A</strong>miga leal y confiable,<br>
+                    <strong>N</strong>unca se rinde, siempre lucha,<br>
+                    <strong>A</strong>mor y alegría en su camino deja.
+                </p>
+            </div>
+            <div class="acrostico-img">
+                <img src="fotoyo.jpeg" alt="Foto de Viviana Noemi Vásquez Arriola" style="width: 300px; height: auto;">
+            </div>
+            </div>
+        </section>
+
+        <section id="biografia" class="section animate__animated animate__fadeInUp">
+            <h2 style="text-align: center;">Biografía</h2>
+            <p style="text-align: center; max-width: 800px; margin: auto;">
+            Esta línea de tiempo representa los momentos más importantes de mi vida, desde mi nacimiento hasta eventos significativos que han marcado mi desarrollo personal y académico.
+            </p>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <h1>2007</h1>
+                    <h4>Nacimiento</h4>
+                    <p>El 16 de diciembre del 2007 nací, cuenta mi mamá que fue un gran dia para ella. Después de pasar tantas situaciones difíciles en el vientre de mi madre logré estar con ella, claro, gracias a la ayuda de Dios. </p>
+                    <img src="chiquis.jpeg" alt="Nacimiento">
+                </div>
+                <div class="timeline-item right">
+                    <h3>2015</h3>
+                    <h4>Inicio de la primaria</h4>
+                    <p>Empecé el ciclo escolar de primaria, recuerdo, se me dificultó hacer amigos durante un largo tiempo, aunque, ese haya sido el único colegio en donde había estado, hasta que conocí a mi mejor amiga en la actualidad, aunque ya no nos vemos tanto, ella sigue siendo una de las mejores personas que conocí.</p>
+                    <img src="urrutia.jpg" alt="Primaria">
+                </div>
+                <div class="timeline-item left">
+                    <h3>2023</h3>
+                    <h4>Secundaria</h4>
+                    <p>Cursé los dos primeros años de básicos en el mismo colegio de siempre, en el último año por primera vez experimenté un cambio, ya que, me transfirieron a un nuevo colegio, logré hacer amigos más rápido que en otras ocasiones, era un grupo muy grande de compañeras, las quise mucho y teníamos una linda convivencia, hasta que a finales de año tuvimos un conflicto que hizo que nos dividieramos, prácticamente me habia quedado sola otra vez, pero una de ellas decidió quedarse conmigo y en la actualidad es una de las personas que más quiero y por consiguiente es mi mejor amiga, es una linda amistad, que siempre se preocupa por mí, este último año, cambió de colegio, estamos a distancia, pero todos los días hablamos como si siempre estuvieramos juntas y nuestros recuerdos parecen estar intactos.</p>
+                    <img src="chiquitita.jpeg" alt="secundaria">
+                </div>
+                <div class="timeline-item right">
+                    <h3>2025</h3>
+                    <h4>Bachillerato</h4>
+                    <p>Sigo en el mismo colegio desde que me cambiaron. El año pasado, me llevaba bien con mi grado, sin embargo, no tenía amigos como tal, y me gustaba juntarme demasiado con personas que conocí de otros grados, tuve dos nuevos amigos de tercero básico, siempre nos juntabamos a la hora de recreo y nos divertíamos mucho juntos, este año tuvieron que cambiarse de colegio ya que están cursando una carrera que no se encuentra en el colegio donde estoy, nos seguimos viendo todas las mañanas y no perdemos la escencia de nuestra amistad, al igual que habían algunos con los que siempre me llevé desde tercero básico ellos eran mi vida social, aún miraba a mi mejor amiga que todavia estaba, pero estudiaba en la tarde. Este año, empecé fortaleciendo amistades con personas que en el pasado apenas y nos hablábamos y ahora nos juntamos siempre cuando se nos pide que hagamos grupo, ya es mi último año de carrera.</p>
+                    <img src="amiguitos.jpeg" alt="Viaje a Alemania">
+                </div>
+            </div>    
+        </section>
+
+        <section id="vision">
+            <div class="vision-container">
+                <h2 class="vision-title">Mi Visión</h2>
+                <p class="vision-text">
+                Me veo trabajando en una empresa la cual me permita relacionarme con los números, la lógica y la estrategia, que son cosas que me gustan hacer. En lo familiar quiero seguir manteniendo una linda relación con mis papás. Tengo una relación con un futuro prometedor de querer casarnos y tener muchos hijos, donde el respeto, la confianza y cordialidad resaltan, él es aceptado como alguien bueno para mí por mis papás y logramos tener un equilibrio entre nuestro tiempo de trabajo y familia.En el área espiritual, me veo más cerca de Dios fortaleciendo mi religión cristiana voy a la iglesia con TODA mi familia los domingos en las mañana y luego, estaríamos disfrutando de un almuerzo juntos. Al igual que sé varios idiomas, ya que me sigue gustando aprender cada vez más nuevas lenguas, por lo tanto, viajo cada que tengo la oportunidad y lo disfruto con la gente que quiero que estén a mi lado. Anhelo tener una buena estabilidad económica, en donde me pueda permitir cumplir mis gustos, también, brindo a mis papás todo lo que necesitan y deseen, como un día ellos lo hicieron por mí.
+                </p>
+            </div>
+        </section>
+
+        <section id="mision">
+            <div class="mision-container">
+                <h2 class="mision-title">Mi Misión</h2>
+                <p class="mision-text">
+                Crecer constantenmente, conforme a los esfuerzos que me va a generar elevarme hasta llegar al punto máximo en el que yo me sienta conforme conmigo misma, al igual que ser una persona más nutrida de valores. Quiero ayudar al crecimiento económico del país y hacer que este sea de abundantes oportunidades para las demás personas con ideas y emociones de querer mejorar en los ámbitos importantes de sus vidas.
+            </div>
+        </section>
+
+        <section id="metas" class="meta-section py-5">
+            <div class="container">
+                <h2 class="section-title text-center mb-5">Mis Metas</h2>
+                <div class="row g-4">
+                    <!-- Metas Académicas -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <i class="fas fa-graduation-cap me-2 text-primary"></i>Metas Académicas
+                                </h4>
+                                <h6 class="text-secondary">Corto Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Obtener buenas notas en mis laboratorios.</li>
+                                </ul>
+                                <h6 class="text-secondary">Mediano Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Iniciar la carrera de Administración de Empresas.</li>
+                                </ul>
+                                <h6 class="text-secondary">Largo Plazo</h6>
+                                <ul class="list-unstyled">
+                                    <li>Estudiar diversos idiomas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metas Familiares -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <i class="fas fa-home me-2 text-success"></i>Metas Familiares
+                                </h4>
+                                <h6 class="text-secondary">Corto Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Seguir manteniendo la linda relación con mi mamá y papá.</li>
+                                </ul>
+                                <h6 class="text-secondary">Mediano Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Mantener la unión familiar.</li>
+                                </ul>
+                                <h6 class="text-secondary">Largo Plazo</h6>
+                                <ul class="list-unstyled">
+                                    <li>Formar mi propia familia.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metas Económicas -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <i class="fas fa-dollar-sign me-2 text-warning"></i>Metas Económicas
+                                </h4>
+                                <h6 class="text-secondary">Corto Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Seguir trabajando con mi mamá.</li>
+                                </ul>
+                                <h6 class="text-secondary">Mediano Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Comenzar a trabajar para ayudar a pagar la universidad.</li>
+                                </ul>
+                                <h6 class="text-secondary">Largo Plazo</h6>
+                                <ul class="list-unstyled">
+                                    <li>Aplicar mi carrera en una empresa y potenciar mi inglés.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metas Emocionales -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <i class="fas fa-heart me-2 text-danger"></i>Metas Emocionales
+                                </h4>
+                                <h6 class="text-secondary">Corto Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Adquirir mayor madurez personal.</li>
+                                </ul>
+                                <h6 class="text-secondary">Mediano Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Lograr estabilidad emocional en mis estudios.</li>
+                                </ul>
+                                <h6 class="text-secondary">Largo Plazo</h6>
+                                <ul class="list-unstyled">
+                                    <li>Ser completamente madura sin perder mi esencia.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metas Físicas -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <i class="fas fa-dumbbell me-2 text-info"></i>Metas Físicas
+                                </h4>
+                                <h6 class="text-secondary">Corto Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Iniciar una rutina de ejercicios.</li>
+                                </ul>
+                                <h6 class="text-secondary">Mediano Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Mantener una rutina regular en el gimnasio.</li>
+                                </ul>
+                                <h6 class="text-secondary">Largo Plazo</h6>
+                                <ul class="list-unstyled">
+                                    <li>Seguir cuidando de mi salud con asesoría nutricional.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metas Espirituales -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <i class="fas fa-praying-hands me-2 text-muted"></i>Metas Espirituales
+                                </h4>
+                                <h6 class="text-secondary">Corto Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Acercarme más a Dios.</li>
+                                </ul>
+                                <h6 class="text-secondary">Mediano Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Fortalecer mi relación espiritual.</li>
+                                </ul>
+                                <h6 class="text-secondary">Largo Plazo</h6>
+                                <ul class="list-unstyled">
+                                    <li>Vivir conforme a sus mandatos y principios.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metas Sociales -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <i class="fas fa-handshake me-2 text-secondary"></i>Metas Sociales
+                                </h4>
+                                <h6 class="text-secondary">Corto Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Conservar mi actual grupo de amistades.</li>
+                                </ul>
+                                <h6 class="text-secondary">Mediano Plazo</h6>
+                                <ul class="list-unstyled mb-3">
+                                    <li>Ampliar mi círculo social.</li>
+                                </ul>
+                                <h6 class="text-secondary">Largo Plazo</h6>
+                                <ul class="list-unstyled">
+                                    <li>Valorar y mantener a los amigos que me apoyan.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="aliados" class="section animate__animated animate__fadeInUp py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Aliados</h2>
+                <p class="mb-5">Conoce a las personas e instituciones que me han acompañado y apoyado en mi camino.</p>
+                <div class="allies-diagram position-relative mx-auto">
+                    <!-- Nodo central: "Yo" -->
+                    <div class="central-node">
+                        <h4>Aliados</h4>
+                    </div>
+                    <!-- Nodo Aliado 1 -->
+                    <div class="ally-node node node-1">
+                        <h5>Social</h5>
+                        <ul class="list-unstyled">
+                            <li>Amigos</li>
+                            <li>Conocidos</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo Aliado 2 -->
+                    <div class="ally-node node node-2">
+                        <h5>Académico</h5>
+                        <ul class="list-unstyled">
+                            <li>Amigos</li>
+                            <li>Papás</li>
+                            <li>Hermanos</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo Aliado 3 -->
+                    <div class="ally-node node node-3">
+                        <h5>Laboral</h5>
+                        <ul class="list-unstyled">
+                            <li>Jefe</li>
+                            <li>Compañeros</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo Aliado 4 -->
+                    <div class="ally-node node node-4">
+                        <h5>Espiritual</h5>
+                        <ul class="list-unstyled">
+                            <li>Dios</li>
+                            <li>Familia</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo Aliado 5 -->
+                    <div class="ally-node node node-5">
+                        <h5>Fisíco</h5>
+                        <ul class="list-unstyled">
+                            <li>Amigos</li>
+                            <li>Tíos</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo Aliado 6 -->
+                    <div class="ally-node node node-6">
+                        <h5>Emocional</h5>
+                        <ul class="list-unstyled">
+                            <li>Dios</li>
+                            <li>Amigos</li>
+                            <li>Hermanos</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo Aliado 7 -->
+                    <div class="ally-node node node-7">
+                        <h5>Económico</h5>
+                        <ul class="list-unstyled">
+                            <li>Jefe</li>
+                            <li>Papás</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo Aliado 8 -->
+                    <div class="ally-node node node-8">
+                        <h5>Familiar</h5>
+                        <ul class="list-unstyled">
+                            <li>Papás</li>
+                            <li>Hermanas</li>
+                            <li>Tías</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="valores" class="section animate__animated animate__fadeInUp py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Mis Valores</h2>
+                <p class="mb-5">Estos son los valores que guían mi vida y mis decisiones.</p>
+                <div class="values-diagram position-relative mx-auto">
+                    <!-- Nodo central: "Valores" -->
+                    <div class="central-node">
+                        <h4>Valores</h4>
+                    </div>
+                    <!-- Nodo 1 -->
+                    <div class="value-node value-1">
+                        <h5>Laboral</h5>
+                        <ul class="list-unstyled">
+                            <li>Puntualidad</li>
+                            <li>Responsabilidad</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 2 -->
+                    <div class="value-node value-2">
+                        <h5>Espiritual</h5>
+                        <ul class="list-unstyled">
+                            <li>Amor</li>
+                            <li>Paz</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 3 -->
+                    <div class="value-node value-3">
+                        <h5>Social</h5>
+                        <ul class="list-unstyled">
+
+                            <li>Respeto</li>
+                            <li>Amabilidad</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 4 -->
+                    <div class="value-node value-4">
+                        <h5>Fisíco</h5>
+                        <ul class="list-unstyled">
+
+                            <li>Responsabilidad</li>
+                            <li>Perseverancia</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 5 -->
+                    <div class="value-node value-5">
+                        <h5>Académico</h5>
+                        <ul class="list-unstyled">
+                            <li>Sinceridad</li>
+                             <li>Responsabilidad</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 6 -->
+                    <div class="value-node value-6">
+                        <h5>Familiar</h5>
+                        <ul class="list-unstyled">
+                            <li>Amar</li>
+                            <li>Respeto</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 7 -->
+                    <div class="value-node value-7">
+                        <h5>Económico </h5>
+                        <ul class="list-unstyled">
+                            <li>Responsabilidad</li>
+                            <li>Humildad</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 8 -->
+                    <div class="value-node value-8">
+                        <h5>Generosidad</h5>
+                        <ul class="list-unstyled">
+                            <li>Perseverancia</li>
+                            <li>Paz</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="estrategias" class="section animate__animated animate__fadeInUp py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Mis Estrategias</h2>
+                <p class="mb-5">Estas son las estrategias que aplico en diferentes áreas de mi vida.</p>
+                <div class="strategies-diagram position-relative mx-auto">
+                    <!-- Nodo central: "Estrategias" -->
+                    <div class="central-node">
+                        <h4>Estrategias</h4>
+                    </div>
+                    <!-- Nodo 1 -->
+                    <div class="strategy-node strategy-1">
+                        <h5>Profesional</h5>
+                        <ul class="list-unstyled">
+                            <li>Capacitación constante</li>
+                            <li>Networking</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 2 -->
+                    <div class="strategy-node strategy-2">
+                        <h5>Educativa</h5>
+                        <ul class="list-unstyled">
+                            <li>Lectura diaria</li>
+                            <li>Uso de tecnología</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 3 -->
+                    <div class="strategy-node strategy-3">
+                        <h5>Creativa</h5>
+                        <ul class="list-unstyled">
+                            <li>Brainstorming</li>
+                            <li>Mind maps</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 4 -->
+                    <div class="strategy-node strategy-4">
+                        <h5>Financiera</h5>
+                        <ul class="list-unstyled">
+                            <li>Ahorro mensual</li>
+                            <li>Diversificación</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 5 -->
+                    <div class="strategy-node strategy-5">
+                        <h5>Social</h5>
+                        <ul class="list-unstyled">
+                            <li>Relaciones genuinas</li>
+                            <li>Trabajo en equipo</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 6 -->
+                    <div class="strategy-node strategy-6">
+                        <h5>Salud</h5>
+                        <ul class="list-unstyled">
+                            <li>Ejercicio regular</li>
+                            <li>Alimentación balanceada</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 7 -->
+                    <div class="strategy-node strategy-7">
+                        <h5>Emprendimiento</h5>
+                        <ul class="list-unstyled">
+                            <li>Metas claras</li>
+                            <li>Iteración constante</li>
+                        </ul>
+                    </div>
+                    <!-- Nodo 8 -->
+                    <div class="strategy-node strategy-8">
+                        <h5>Productividad</h5>
+                        <ul class="list-unstyled">
+                            <li>Gestión del tiempo</li>
+                            <li>Eliminación de distracciones</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="foda" class="section animate__animated animate__fadeInUp py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Análisis FODA</h2>
+                <p class="mb-5">Evaluación de mis fortalezas, oportunidades, debilidades y amenazas.</p>
+                <div class="foda-table">
+                    <div class="foda-row">
+                        <div class="foda-box fortalezas">
+                            <h4>Fortalezas</h4>
+                            <ul>
+                                <li>Disciplina</li>
+                                <li>Habilidades técnicas</li>
+                                <li>Creatividad</li>
+                            </ul>
+                        </div>
+                        <div class="foda-box oportunidades">
+                            <h4>Oportunidades</h4>
+                            <ul>
+                                <li>Tecnología accesible</li>
+                                <li>Red de contactos</li>
+                                <li>Nuevas tendencias</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="foda-row">
+                        <div class="foda-box debilidades">
+                            <h4>Debilidades</h4>
+                            <ul>
+                                <li>Gestión del tiempo</li>
+                                <li>Procrastinación</li>
+                                <li>Perfeccionismo excesivo</li>
+                            </ul>
+                        </div>
+                        <div class="foda-box amenazas">
+                            <h4>Amenazas</h4>
+                            <ul>
+                                <li>Alta competencia</li>
+                                <li>Cambios en el mercado</li>
+                                <li>Factores económicos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="conclusion" class="section animate__animated animate__fadeInUp py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Conclusión</h2>
+                <p class="mb-5">Reflexión final sobre mi proyecto de vida y el camino que seguiré.</p>
+                <div class="conclusion-box">
+                    <p class="conclusion-text">
+                        A lo largo de este proyecto de vida, he podido identificar mis fortalezas, oportunidades, metas y valores que me guiarán en mi camino.  
+                        Cada paso que doy está alineado con mis principios, buscando siempre el crecimiento personal, profesional y emocional.  
+                        Sé que habrá desafíos, pero con perseverancia, disciplina y pasión, seguiré avanzando hasta alcanzar mis sueños.  
+                        <strong>El futuro es un lienzo en blanco, y estoy listo para pintarlo con mis acciones y decisiones.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="agradecimientos" class="section animate__animated animate__fadeInUp py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Agradecimientos</h2>
+                <p class="mb-4">Un espacio para reconocer a quienes han sido parte fundamental en mi camino.</p>
+        
+                <div class="gratitude-box">
+                    <p class="gratitude-text">
+                        A lo largo de mi vida, he contado con el apoyo incondicional de personas que han sido fundamentales en mi crecimiento personal y profesional.  
+                        Quiero agradecer a mi familia, por ser mi pilar, brindándome amor, valores y motivación para seguir adelante.  
+                        A mis amigos, por su compañía, consejos y momentos de alegría que han enriquecido mi vida.  
+                        A mis mentores y maestros, por compartir su conocimiento y guiarme con su sabiduría.  
+                        Y finalmente, a mí mismo, por la dedicación y el esfuerzo que he puesto en cada paso de este viaje.  
+                        Este proyecto de vida es el reflejo de todos esos aprendizajes y experiencias que me han convertido en la persona que soy hoy y la que seré en un futuro.  
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="metas-alcanzadas" class="section animate__animated animate__fadeInUp py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Metas Alcanzadas</h2>
+                <p class="mb-4">Cada meta lograda es un paso más en mi camino hacia el éxito y el crecimiento personal.</p>
+        
+                <div class="goals-box mx-auto p-4">
+                    <p><strong>🎓 Educación:</strong> He completado etapas académicas clave que han fortalecido mi conocimiento y habilidades.</p>
+                    <p><strong>💼 Desarrollo Profesional:</strong> He adquirido experiencia y competencias en mi área de interés.</p>
+                    <p><strong>🏆 Crecimiento Personal:</strong> He superado desafíos, fortalecido mi disciplina y mejorado mi bienestar emocional.</p>
+                    <p><strong>🌍 Impacto Social:</strong> He contribuido con acciones positivas en mi comunidad y entorno.</p>
+                </div>
+            </div>
+        </section>
+    
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <p class="quote">"El éxito no es la clave de la felicidad, la felicidad es la clave del éxito."</p>
+            <nav>
+                <a href="#caratula">Caratula</a> |
+                <a href="#personalidad">Personalidad</a> |
+                <a href="#autorretrato">Autorretrato</a> |
+                <a href="#acro">Acróstico</a>
+                <a href="#biografia">Biografia</a> |
+                <a href="#vision">Visión</a> |
+                <a href="#mision">Misión</a> |
+                <a href="#metas">Metas</a>
+                <a href="#aliados">Aliados</a>
+                <a href="#valores">Valores</a> |
+                <a href="#estrategias">Estrategias</a> |
+                <a href="foda">FODA</a>
+                <a href="#conclusion">Conclusión</a> |
+                <a href="agradecimientos">Agradecimientos</a>
+                <a href="#metas-alcanzadas">Metas Alcanzadas</a>
+            </nav>
+            <p class="copyright">© 2025 PROYECTO DE VIDA VIVIANA VÁSQUEZ. Todos los derechos reservados.</p>
+            <a href="#" class="back-to-top">⬆ Volver arriba</a>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>
